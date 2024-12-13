@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Disney+ Clone</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+
+    width: 100%;
+    padding:100%
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: ##0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+    </style>
+</head>
+<body background="{{ url_for('static',filename='images/bb.png')}}">
+    <nav class="navbar">
+        <div class="right-container">
+            <a href="/login" class="login-link">Login</a>
+            <button class="sub-btn"><a href="/subscript">subscribe</a></button>
+
+        </div>
+    </nav>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+

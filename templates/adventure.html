@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+
+
+        .card-bodyy{
+    margin: 20px auto;
+    padding 20px;
+    width: 80%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+    .roww{
+
+    padding:5px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 20px;
+    }
+    .containerr{
+    margin-top: 20px;
+
+    }
+        .containrr{
+        max-width: 600px;
+        margin:0 auto;
+
+    align-items: right;
+    margin-right: auto;
+    color: white;
+        }
+
+      video{
+      display:block;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 900px;
+      }
+        .dropdown-container{
+        display:flex;
+        align-items: right;
+        justify-content: right;
+        gap:10px;
+        margin-top: 10px;
+        }
+        select{
+        padding:5px;
+        font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/index">Home</a></li>
+            <li class="nav-items"><a href="/movies">Movies</a></li>
+            <li class="nav-items"><a href="/add-movies">Add Movies</a></li>
+        </ul>
+
+        <div class="right-container">
+            <button class="sub-btn"><a href="/subscript">subscribe</a></button>
+            <a href="/logout" class="login-link">Logout</a>
+        </div>
+    </nav>
+<h3 style="text-align:center; color: #fff; ">DO SUBSCRIBE! to get more such movies.</h3><br>
+
+<h1 style="text-align:center; color: #fff; ">Adventures Movies</h1><br>
+    <div class="drop-container">
+    <span style="color: #fff;width: 100%; height: 80px;">Select a Movies:</span>
+    <select id="movie-dropdown">
+      <option value="" disabled selected>Choose a category</option>
+      <option value="/action">Action</option>
+        <option value="/horror">Horror</option>
+        <option value="/national">National Geographic</option>
+    </select>
+  </div>
+
+  <script>
+    // Get reference to the dropdown
+    const movieDropdown = document.getElementById('movie-dropdown');
+
+    // Add event listener to navigate to the selected movie's page
+    movieDropdown.addEventListener('change', function() {
+      const selectedPage = movieDropdown.value;
+      if (selectedPage) {
+        window.location.href = selectedPage; // Redirect to the selected movie HTML page
+      }
+    });
+  </script><br>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: KING KONG </h1>
+  <video src="{{ url_for('static',filename='videos/adventure/King Kong.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "King Kong" is an action-adventure movie that follows a film crew led by director Carl Denham to the mysterious Skull Island. They discover a colossal ape named Kong who rules the island. The crew captures Kong, and Denham brings him to New York to showcase as the "Eighth Wonder of the World." However, Kong escapes and rampages through the city, eventually climbing the Empire State Building with actress Ann Darrow in his hand. Despite his powerful presence, Kong is ultimately brought down by fighter planes. The film explores themes of nature versus civilization and human greed.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: GODZILLA(2014) </h1>
+  <video src="{{ url_for('static',filename='videos/adventure/Godzilla (2014).mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: In 1954, a nuclear test in the Pacific awakens Godzilla, a giant prehistoric monster. In present day, Joe Brody (Bryan Cranston), a nuclear physicist, discovers that Godzilla's awakening is linked to a parasitic creature known as the MUTO. As Godzilla and the MUTO wreak havoc on San Francisco, Ford Brody (Aaron Taylor-Johnson), Joe's son, joins a team of scientists to stop the monsters and save humanity.
+        <br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: GODZILLA KING OF THE MONSTERS(2019)</h1>
+  <video src="{{ url_for('static',filename='videos/adventure/Godzilla_ King of the Monsters (2019).mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION:"Godzilla: King of the Monsters" follows the awakening of ancient, powerful titans, including Godzilla, Mothra, Rodan, and the three-headed King Ghidorah. Dr. Emma Russell, a scientist working with Monarch, uses a device to communicate with these creatures but inadvertently unleashes chaos by awakening Ghidorah. As Ghidorah wreaks havoc, Godzilla rises to challenge him, fighting to reclaim his title as Earth's alpha predator. Amidst epic battles, Emma’s estranged husband, Mark, and their daughter, Madison, are caught in the conflict. The film features massive monster showdowns while exploring themes of environmental balance, humanity’s place in nature, and Godzilla as Earth's protector.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: KONG VS SKULL CRAWLER </h1>
+  <video src="{{ url_for('static',filename='videos/adventure/Kong vs Skull Crawler.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: In "Kong: Skull Island," a team of explorers and soldiers ventures to the uncharted Skull Island, where they encounter the colossal ape, Kong. While navigating the island’s dangers, they learn that Kong is the protector of the land, safeguarding it from deadly creatures called Skullcrawlers. These reptilian monsters dwell beneath the island and pose a threat to all life there. The climax features an epic battle between Kong and the largest Skullcrawler. Kong uses his strength, intelligence, and environment to defeat the creature, reaffirming his role as the island’s guardian. The film blends action, adventure, and stunning visuals.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: RAMPAGE </h1>
+  <video src="{{ url_for('static',filename='videos/adventure/Rampage.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "Rampage" follows primatologist Davis Okoye, who has a strong bond with a rare albino gorilla named George. After a genetic experiment goes wrong, George, along with a wolf and a crocodile, is exposed to a pathogen that causes them to grow into gigantic, aggressive monsters. As the mutated creatures wreak havoc across North America, Davis teams up with geneticist Dr. Kate Caldwell to find a cure. Together, they must stop the monsters before they destroy Chicago. In a climactic battle, Davis and George fight the other creatures, ultimately saving the city. The film combines action, humor, and large-scale destruction.<br>
+</div>
+<br>
+</body>
+</html>

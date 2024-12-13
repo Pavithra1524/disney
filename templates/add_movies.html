@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Add Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding:100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+ .search-box {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background-color: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    width: 250px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .5s;
+ }
+
+ .search-box:focus {
+    width: 400px;
+    border-color: #1f80e0;
+ }
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+ .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    padding: 20px 0;
+    overflow-x: hidden;
+    margin-top: 80px;
+ }
+
+ .carousel {
+    display: flex;
+    width: 92%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+ }
+
+ .slider {
+    flex: 0 0 auto;
+    margin-right: 30px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: 1s;
+    overflow: hidden;
+ }
+
+ .slider img {
+    width: 70%;
+    min-height: 100%;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+ }
+
+ .slide-content {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to right, #030b17 80%, #0c111b00);
+    color: #fff;
+ }
+
+ .movie-title {
+    padding-left: 50px;
+    text-transform: capitalize;
+    margin-top: 80px;
+ }
+
+ .movie-des {
+    width: 80%;
+    line-height: 30px;
+    padding-left: 50px;
+    margin-top: 30px;
+    opacity: 0.8;
+ }
+
+ .video-card-container {
+    position: relative;
+    width: 92%;
+    margin: auto;
+    height: 10vw;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+ }
+
+ .video-card {
+    position: relative;
+    min-width: calc(100%/5 - 10px);
+    width: calc(100%/5 - 10px);
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #030b17;
+ }
+
+ .video-card-image,
+ .card-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+ }
+
+ .card-video {
+    position: relative;
+ }
+
+ .video-card:hover .video-card-image {
+    display: none;
+ }
+
+ .title {
+    color: #fff;
+    opacity: 0.9;
+    padding-left: 4%;
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 500;
+ }
+
+ .movies-list {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    margin: 10px 0 20px;
+ }
+
+ .card-container {
+    position: absolute;
+    width: 96%;
+    padding-left: 4%;
+    height: 220PX;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+ }
+
+ .card-container::-webkit-scrollbar {
+    display: none;
+ }
+
+ .card1 {
+    padding:20px;
+    position: relative;
+    min-width: 150px;
+    width: 150px;
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 10px;
+    transition: .5s;
+    background: #000;
+
+ }
+ .card:hover {
+    transform: scale(1.1);
+ }
+ .card:hover .card-body1 {
+    opacity: 1;
+ }
+
+ .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+ }
+
+ .card-body1 {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    #background: linear-gradient(to bottom, rgba(4, 8, 15, 0), #192133 90%);
+    padding: 10px;
+    transition: 0.5s;
+    color: #000;
+ }
+
+ .name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-top: 60%;
+ }
+
+ .des {
+    color: #fff;
+    opacity: 0.8;
+    margin: 5px 0;
+    font-weight: 500;
+    font-size: 12px;
+ }
+
+ .watchlist-btn {
+    position: relative;
+    width: 100%;
+    text-transform: capitalize;
+    background: none;
+    border: none;
+    font-weight: 500;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 5px 0;
+    cursor: pointer;
+    padding: 10px 5px;
+    border-radius: 5px;
+ }
+
+ .watchlist-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    height: 35px;
+    width: 35px;
+    background-image: url(images/add.png);
+    background-size: cover;
+    transform: scale(0.4);
+ }
+
+ .watchlist-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+ }
+
+ .pre-btn,
+ .nxt-btn {
+    position: absolute;
+    top: 0;
+    width: 5%;
+    height: 100%;
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+    outline: none;
+ }
+
+ .pre-btn {
+    left: 0;
+    background: linear-gradient(to right, #0c111b 0%, #0c111b00);
+ }
+
+ .nxt-btn {
+    right: 0;
+    background: linear-gradient(to left, #0c111b 0%, #0c111b00);
+ }
+
+ .pre-btn img,
+ .nxt-btn img {
+    width: 15px;
+    height: 20px;
+    opacity: 0;
+ }
+
+ .pre-btn:hover img,
+ .nxt-btn:hover img {
+    opacity: 1;
+ }
+
+h1 {
+color: #333;
+text-align: center;
+}
+table {
+width: 100%;
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+td {
+padding: 10px;
+}
+label {
+color: #fff;
+font-weight: bold;
+}
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
+width: 100%;
+padding: 8px;
+border: 1px solid #ddd;
+border-radius: 4px;
+box-sizing: border-box;
+font-size: 16px;
+}
+input[type="submit"] {
+background-color: #4CAF50;
+color: white;
+padding: 10px ;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 18px;
+}
+input[type="submit"]:hover {
+}
+.error {
+color: #ff0000;
+font-size: 14px;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/index">Home</a></li>
+            <li class="nav-items"><a href="/movies">Movies</a></li>
+            <li class="nav-items"><a href="/add-movies">Add Movies</a></li>
+
+        </ul>
+
+        <div class="right-container">
+            <button class="sub-btn"><a href="/subscript">subscribe</a></button>
+            <a href="/logout" class="login-link">Logout</a>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<h1 style="color:#fff;">Registration Form</h1>
+<form action="/submit" method="post" enctype="application/x-www-form-urlencoded">
+<table>
+    <label for="movies_title">Movie Title : </label>
+    <input type="text" id="movies_title" name="movies_title"  required><br>
+
+    <label for="movies_director" class="form-label">Movie Director : </label>
+    <input type="text" id="movies_director" name="movies_director"  required><br>
+
+    <label for="movies_cast">Movie Cast : </label>
+    <input type="text" id="movies_cast" name="movies_cast" required><br>
+
+    <label for="movies_country">Country : </label>
+    <input type="text" id="movies_country" name="movies_country"  required><br>
+
+    <label for="movies_description">Movie Description : </label>
+    <textarea id="movies_description" name="movies_description" rows="4"  required></textarea><br>
+
+    <label for="movies_release_year">Release_year : </label>
+    <input type="text" id="movies_release_year" name="movies_release_year" required><br>
+
+    <td colspan="2" style="text-align:center; padding: 10px">
+        <input type="submit" value="Submit">
+    </td>
+</table>
+</form>
+</body>
+</html>

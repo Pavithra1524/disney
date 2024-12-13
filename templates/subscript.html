@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Subscription </title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    padding: 120px;
+    background-color: #0c111b;
+}
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+ .search-box {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background-color: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    width: 250px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .5s;
+ }
+
+ .search-box:focus {
+    width: 400px;
+    border-color: #1f80e0;
+ }
+.sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+.container{
+    width: 1100px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.container .card{
+    width: 300px;
+    height: auto;
+    padding: 10px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #ee20d6 0%, #0a2fb6 100%);
+    border-radius: 15px;
+    box-shadow: 2px 5px 15px black;
+    transition: transform 0.3s;
+}
+
+.container .card:hover{
+    transform: scale(1.050);
+}
+
+.container .card .card-title{
+    padding: 30px 20px;
+    border-bottom: 2px solid gray;
+}
+
+.container .card .card-title h2{
+    font-size: 35px;
+    padding-bottom: 15px;
+    color: yellow;
+}
+
+.container .card .card-title p span{
+    font-size: 40px;
+    padding: 0 5px;
+}
+
+.container .card .card-content ul{
+    padding: 10px 30px;
+    padding-bottom: 20px;
+}
+
+.container .card .card-content ul li{
+    list-style: none;
+    padding: 10px 0;
+}
+
+.container .card .card-content ul li i{
+    margin-right: 4px;
+}
+
+.container .card .card-content button{
+    width: 120px;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container .card .card-content button:hover{
+    background: #17ead9;
+    letter-spacing: 1.2px;
+}
+
+.container .card .card-content button a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+    </style>
+</head>
+<body>
+     <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/inde">Home</a></li>
+
+        </ul>
+
+        <div class="right-container">
+            <a href="/exit" class="login-link">Exit</a>
+        </div>
+    </nav>
+   <div class="container">
+       <div class="card">
+           <div class="card-title">
+               <h2>Basic</h2>
+               <p><i class="fa fa-rupee"></i><Span>199</Span>/month</p>
+           </div>
+           <div class="card-content">
+               <ul>
+                   <li><i class="fa fa-check-circle"></i>1 device</li>
+                   <li><i class="fa fa-check-circle"></i>Video Quality - GOOD</li>
+                   <li><i class="fa fa-check-circle"></i>Resolution - 480p</li>
+                   <li><i class="fa fa-check-circle"></i>HD Not Available</li>
+                   <li><i class="fa fa-check-circle"></i>Unlimited Movies and TV Shows</li>
+                   <li><i class="fa fa-times-circle"></i>Cancel Anytime</li>
+               </ul>
+               <button><a href="/buy">Buy Now</a></button>
+           </div>
+       </div>
+       <div class="card">
+           <div class="card-title">
+               <h2>Standard</h2>
+               <p><i class="fa fa-rupee"></i><Span>499</Span>/month</p>
+           </div>
+           <div class="card-content">
+               <ul>
+                <li><i class="fa fa-check-circle"></i>1 device</li>
+                <li><i class="fa fa-check-circle"></i>Video Quality - BETTER</li>
+                <li><i class="fa fa-check-circle"></i>Resolution - 1080p</li>
+                <li><i class="fa fa-check-circle"></i>HD Available</li>
+                <li><i class="fa fa-check-circle"></i>Unlimited Movies and TV Shows</li>
+                <li><i class="fa fa-times-circle"></i>Cancel Anytime</li>
+               </ul>
+               <button><a href="/buy">Buy Now</a></button>
+           </div>
+       </div>
+       <div class="card">
+           <div class="card-title">
+               <h2>Premium</h2>
+               <p><i class="fa fa-rupee"></i><Span>649</Span>/month</p>
+           </div>
+           <div class="card-content">
+               <ul>
+                <li><i class="fa fa-check-circle"></i>1 device</li>
+                <li><i class="fa fa-check-circle"></i>Video Quality - BEST</li>
+                <li><i class="fa fa-check-circle"></i>Resolution - 4K+HDR</li>
+                <li><i class="fa fa-check-circle"></i>HD Available</li>
+                <li><i class="fa fa-check-circle"></i>Unlimited Movies and TV Shows</li>
+                <li><i class="fa fa-times-circle"></i>Cancel Anytime</li>
+               </ul>
+               <button><a href="/buy">Buy Now</a></button>
+           </div>
+       </div>
+   </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

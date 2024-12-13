@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+
+
+        .card-bodyy{
+    margin: 20px auto;
+    padding 20px;
+    width: 80%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+    .roww{
+
+    padding:5px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 20px;
+    }
+    .containerr{
+    margin-top: 20px;
+
+    }
+        .containrr{
+        max-width: 600px;
+        margin:0 auto;
+
+    align-items: right;
+    margin-right: auto;
+    color: white;
+        }
+
+      video{
+      display:block;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 900px;
+      }
+        .dropdown-container{
+        display:flex;
+        align-items: right;
+        justify-content: right;
+        gap:10px;
+        margin-top: 10px;
+        }
+        select{
+        padding:5px;
+        font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/index">Home</a></li>
+            <li class="nav-items"><a href="/movies">Movies</a></li>
+            <li class="nav-items"><a href="/add-movies">Add Movies</a></li>
+        </ul>
+
+        <div class="right-container">
+            <button class="sub-btn"><a href="/subscript">subscribe</a></button>
+            <a href="/logout" class="login-link">Logout</a>
+        </div>
+    </nav>
+<h3 style="text-align:center; color: #fff; ">DO SUBSCRIBE! to get more such movies.</h3><br>
+
+<h1 style="text-align:center; color: #fff; ">Horror Movies</h1><br>
+    <div class="drop-container">
+    <span style="color: #fff;width: 100%; height: 80px;">Select a Movies:</span>
+    <select id="movie-dropdown">
+      <option value="" disabled selected>Choose a category</option>
+      <option value="/action">Action</option>
+        <option value="/adventure">Adventures</option>
+        <option value="/national">National Geographic</option>
+    </select>
+  </div>
+
+  <script>
+    // Get reference to the dropdown
+    const movieDropdown = document.getElementById('movie-dropdown');
+
+    // Add event listener to navigate to the selected movie's page
+    movieDropdown.addEventListener('change', function() {
+      const selectedPage = movieDropdown.value;
+      if (selectedPage) {
+        window.location.href = selectedPage; // Redirect to the selected movie HTML page
+      }
+    });
+  </script><br>
+
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: CONJURING 1</h1>
+  <video src="{{ url_for('static',filename='videos/horror/Conjuring 1.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: Paranormal investigators Ed (Patrick Wilson) and Lorraine Warren (Vera Farmiga) help a family terrorized by a malevolent spirit in their farmhouse. The Perron family, consisting of Carolyn (Lili Taylor) and Roger (Ron Livingston), and their five daughters, are being tormented by an evil entity. The Warrens discover that the house has a dark history and work to rid the family of the malevolent spirit before it's too late.
+        <br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: CONJURING 2 </h1>
+  <video src="{{ url_for('static',filename='videos/horror/conjuring 2.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "The Conjuring 2" is a supernatural horror film based on real events. Paranormal investigators Ed and Lorraine Warren travel to Enfield, England, to help a single mother and her four children, who are terrorized by a malevolent spirit in their home. The haunting centers on the youngest daughter, Janet, who is possessed by the spirit of an old man. As the Warrens dig deeper, they discover a darker entity, the demon Valak, controlling the spirit. Battling personal fears and evil forces, the Warrens work to save Janet and free the family from the terror, risking their own lives in the process.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: CONJURING 3 </h1>
+  <video src="{{ url_for('static',filename='videos/horror/conjuring 3.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "The Conjuring: The Devil Made Me Do It" is the third installment in the Conjuring series. It follows paranormal investigators Ed and Lorraine Warren as they tackle one of their most shocking cases. The story revolves around Arne Johnson, a young man accused of murder who claims to have been possessed by a demon. The Warrens investigate the case, tracing the possession back to a cursed object tied to a satanic cult. As they uncover dark secrets, Lorraine uses her psychic abilities to confront a powerful occultist. The film blends courtroom drama with supernatural horror, exploring themes of faith and evil.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: PIRANHA 3D </h1>
+  <video src="{{ url_for('static',filename='videos/horror/pirhana 3d.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "Piranha 3D" is an action-horror adventure set at Lake Victoria, where an underwater tremor releases prehistoric piranhas into the lake during spring break. As partygoers flock to the water for fun, the vicious, flesh-eating fish attack, causing chaos and carnage. Local sheriff Julie Forester and her team race against time to save her family and the townspeople. Meanwhile, a seismologist, Novak, helps uncover the origin of the deadly creatures. With gruesome special effects and intense action, the film delivers a mix of horror and dark humor, as the characters fight to survive the bloody onslaught of the piranhas.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: THE RINGS </h1>
+  <video src="{{ url_for('static',filename='videos/horror/the rings.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "Rings" is a supernatural horror film that follows Julia, a young woman who becomes concerned when her boyfriend, Holt, investigates a mysterious urban legend about a cursed videotape. The tape causes viewers to die seven days after watching it. In her attempt to save Holt, Julia watches the tape herself and begins to experience terrifying visions. As they uncover the dark origins of the curse, Julia discovers a hidden recording within the video, revealing new secrets about Samara, the vengeful spirit. With time running out, they must unravel the mystery to stop the deadly curse before it claims more lives.<br>
+</div>
+<br>
+</body>
+</html>

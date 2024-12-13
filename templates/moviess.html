@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+        .card-bodyy{
+    margin: 20px auto;
+    padding 20px;
+    width: 80%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+    .roww{
+
+    padding:5px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 20px;
+    }
+    .containerr{
+    margin-top: 20px;
+
+    }
+        .movie-card {
+  background: linear-gradient(135deg, #ffffff, #e3e4e6);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px;
+  width: 350px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.movie-card p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.edit-button, .delete-button {
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(72, 239, 128, 0.5);
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px rgba(244, 67, 54, 0.5);
+}
+
+/* Add hover animations */
+button:active {
+  transform: scale(0.95);
+}
+
+ .containrr{
+        max-width: 600px;
+        margin:0 auto;
+
+    align-items: right;
+    margin-right: auto;
+    color: white;
+        }
+
+         .dropdown-container{
+        display:flex;
+        align-items: right;
+        justify-content: right;
+        gap:10px;
+        margin-top: 10px;
+        }
+        select{
+        padding:5px;
+        font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/inde">Home</a></li>
+            <li class="nav-items"><a href="/moviess">Movies</a></li>
+            <li class="nav-items"><a href="/add">Add Movies</a></li>
+        </ul>
+
+        <div class="right-container">
+            <a href="/exit" class="login-link">Exit</a>
+        </div>
+    </nav>
+
+<h1 style="text-align:center; color: #fff; ">List of Movies</h1><br>
+    <div class="drop-container">
+    <span style="color: #fff;width: 100%; height: 80px;">Select a Movies:</span>
+    <select id="movie-dropdown">
+      <option value="" disabled selected>Choose a category</option>
+      <option value="/actions">Action</option>
+        <option value="/adventures">Adventures</option>
+        <option value="/horrors">Horror</option>
+        <option value="/nationals">National Geographic</option>
+    </select>
+  </div>
+
+  <script>
+    // Get reference to the dropdown
+    const movieDropdown = document.getElementById('movie-dropdown');
+
+    // Add event listener to navigate to the selected movie's page
+    movieDropdown.addEventListener('change', function() {
+      const selectedPage = movieDropdown.value;
+      if (selectedPage) {
+        window.location.href = selectedPage; // Redirect to the selected movie HTML page
+      }
+    });
+  </script>
+
+<br><div class="containerr">
+    <div class="roww">
+        {% for movies in content %}
+        <div class="card-bodyy" style="width: 18rem;">
+          <div class="card-bodyy">
+            <h5 class="card-title">Title = {{ movies.title }}</h5>
+            <p class="card-text">Description = {{ movies.description }}</p>
+              <p class="card-text">Cast = {{movies.cast}}</p>
+              <p class="card-text">Country = {{movies.country}}</p>
+            <p class="card-text">Director = {{ movies.director }} </p>
+              <p class="card-text">Released_Year = {{ movies.release_year }}</p>
+              <div class="button-container">
+                  <button class="edit-button"><i class="fas fa-edit"></i><a href="/update_moviess/{{movies.id}}">edit</a></button>
+               <button class="delete-button" onclick="confirmDelete({{movies.id}})"><i class="fas fa-edit"></i>delete</button>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+ <script>
+        function confirmDelete(movieId) {
+            // Show a confirmation alert
+            const confirmation = confirm("Are you sure you want to delete this movie?");
+            if (confirmation) {
+                // If user confirms, proceed with the delete request
+                fetch(`/delete/${movieId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Show response message
+                    if (data.message === 'movie deleted successfully') {
+                        window.location.reload(); // Optionally, refresh the page
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>
+

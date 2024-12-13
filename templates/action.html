@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+
+
+        .card-bodyy{
+    margin: 20px auto;
+    padding 20px;
+    width: 80%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+    .roww{
+
+    padding:5px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 20px;
+    }
+    .containerr{
+    margin-top: 20px;
+
+    }
+        .containrr{
+        max-width: 600px;
+        margin:0 auto;
+
+    align-items: right;
+    margin-right: auto;
+    color: white;
+        }
+
+      video{
+      display:block;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 900px;
+      }
+        .dropdown-container{
+        display:flex;
+        align-items: right;
+        justify-content: right;
+        gap:10px;
+        margin-top: 10px;
+        }
+        select{
+        padding:5px;
+        font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/index">Home</a></li>
+            <li class="nav-items"><a href="/movies">Movies</a></li>
+            <li class="nav-items"><a href="/add-movies">Add Movies</a></li>
+        </ul>
+
+        <div class="right-container">
+            <button class="sub-btn"><a href="/subscript">subscribe</a></button>
+            <a href="/logout" class="login-link">Logout</a>
+        </div>
+    </nav>
+<h3 style="text-align:center; color: #fff; ">DO SUBSCRIBE! to get more such movies.</h3><br>
+
+<h1 style="text-align:center; color: #fff; ">Action Movies</h1><br>
+    <div class="drop-container">
+    <span style="color: #fff;width: 100%; height: 80px;">Select a Movies:</span>
+    <select id="movie-dropdown">
+      <option value="" disabled selected>Choose a category</option>
+        <option value="/adventure">Adventures</option>
+        <option value="/horror">Horror</option>
+        <option value="/national">National Geographic</option>
+
+    </select>
+  </div>
+
+  <script>
+    // Get reference to the dropdown
+    const movieDropdown = document.getElementById('movie-dropdown');
+
+    // Add event listener to navigate to the selected movie's page
+    movieDropdown.addEventListener('change', function() {
+      const selectedPage = movieDropdown.value;
+      if (selectedPage) {
+        window.location.href = selectedPage; // Redirect to the selected movie HTML page
+      }
+    });
+  </script><br>
+
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: FAST and FURIOUS</h1>
+  <video src="{{ url_for('static',filename='videos/action/FAST and FURIOUS 7.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: Undercover cop Brian O'Conner (Paul Walker) infiltrates a group of high-performance car thieves in Los Angeles, led by Dominic Toretto (Vin Diesel). As Brian gains the trust of Dom's crew, he falls for Dom's sister Mia (Jordana Brewster) and becomes embroiled in their world of street racing and heists. The film's high-octane action and memorable characters launched the beloved franchise.
+        <br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: KNIGHT AND DAY </h1>
+  <video src="{{ url_for('static',filename='videos/action/knight.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "Knight and Day" is an action-comedy about June Havens, an ordinary woman who crosses paths with Roy Miller, a secret agent on the run. After a chance encounter at the airport, June is thrust into a dangerous adventure as Roy is hunted by both the CIA and international arms dealers. Roy claims he's trying to protect a powerful energy device, the Zephyr, from falling into the wrong hands. As they evade capture across various exotic locations, June questions Roy's true intentions but soon learns to trust him. Filled with thrilling chases, humor, and romance, the film blends action with lighthearted fun.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: THE TRANSPORTER </h1>
+  <video src="{{ url_for('static',filename='videos/action/transporter.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "The Transporter" is an action-thriller centered on Frank Martin, a skilled driver for hire who specializes in transporting dangerous or illegal goods without asking questions. Living by a strict code, Frank completes his jobs with precision and efficiency. However, his latest assignment takes a turn when he discovers that his cargo is a kidnapped woman, Lai. This discovery pulls Frank into a dangerous conspiracy involving human trafficking. As he defies his own rules to protect Lai, Frank uses his combat and driving skills to take down criminals, while evading both the law and deadly adversaries in high-speed, action-packed sequences.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: BABY DRIVER </h1>
+  <video src="{{ url_for('static',filename='videos/action/driver.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "Baby Driver" is a high-octane action film about Baby, a young getaway driver with exceptional driving skills, who uses music to drown out his tinnitus and stay focused. Working for a crime boss named Doc, Baby is forced into a series of dangerous heists with different crews. Despite his desire to leave the criminal life behind and start fresh with his love interest, Debora, Baby becomes entangled in a final, high-stakes job. As the heists go wrong, Baby must outwit the criminals and the law to escape. The film is known for its stylish car chases, synchronized to a vibrant soundtrack.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: AVENGERS </h1>
+  <video src="{{ url_for('static',filename='videos/action/avengers.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: "The Avengers" is a superhero action film where Nick Fury, director of S.H.I.E.L.D., assembles a team of extraordinary heroes to save Earth from an alien invasion led by Loki, Thor's adoptive brother. The team includes Iron Man, Captain America, Thor, the Hulk, Black Widow, and Hawkeye. Initially clashing due to their differing personalities and agendas, the heroes must learn to work together as Loki uses the Tesseract, a powerful energy source, to open a portal for an alien army. In a climactic battle in New York, the Avengers unite to defeat Loki and save the world, marking the team's formation.<br>
+</div>
+<br>
+</body>
+</html>

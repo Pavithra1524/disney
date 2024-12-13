@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Movies</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 100px;
+    width: 100%;
+    background: #0c111b;
+    position: relative;
+    font-family: roboto, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #0c111b;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 70px;
+}
+
+.nav-links {
+    margin-top: 10px;
+    display: flex;
+    list-style: none;
+}
+ .nav-items a {
+    text-decoration: none;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: #fff;
+    opacity: 0.9;
+ }
+
+ .right-container {
+    display: block;
+    margin-left: auto;
+ }
+
+
+
+ .sub-btn {
+    background-color: #1f80e0;
+    height: 30px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0 10px;
+ }
+
+ .login-link {
+    color: #fff;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+ }
+
+
+
+
+        .card-bodyy{
+    margin: 20px auto;
+    padding 20px;
+    width: 80%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    }
+    .roww{
+
+    padding:5px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    grid-gap: 20px;
+    }
+    .containerr{
+    margin-top: 20px;
+
+    }
+        .containrr{
+        max-width: 600px;
+        margin:0 auto;
+
+    align-items: right;
+    margin-right: auto;
+    color: white;
+        }
+
+      video{
+      display:block;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 900px;
+      }
+        .dropdown-container{
+        display:flex;
+        align-items: right;
+        justify-content: right;
+        gap:10px;
+        margin-top: 10px;
+        }
+        select{
+        padding:5px;
+        font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static',filename='images/logo.png')}}" class="brand-logo" alt="">
+        <ul class="nav-links">
+            <li class="nav-items"><a href="/inde">Home</a></li>
+            <li class="nav-items"><a href="/moviess">Movies</a></li>
+            <li class="nav-items"><a href="/add">Add Movies</a></li>
+
+        </ul>
+
+        <div class="right-container">
+            <a href="/exit" class="login-link">Exit</a>
+        </div>
+    </nav>
+
+<h1 style="text-align:center; color: #fff; ">National Geographic Movies</h1><br>
+    <div class="drop-container">
+    <span style="color: #fff;width: 100%; height: 80px;">Select a Movies:</span>
+    <select id="movie-dropdown">
+      <option value="" disabled selected>Choose a category</option>
+      <option value="/actions">Action</option>
+        <option value="/adventures">Adventures</option>
+        <option value="/horrors">Horror</option>
+    </select>
+  </div>
+
+  <script>
+    // Get reference to the dropdown
+    const movieDropdown = document.getElementById('movie-dropdown');
+
+    // Add event listener to navigate to the selected movie's page
+    movieDropdown.addEventListener('change', function() {
+      const selectedPage = movieDropdown.value;
+      if (selectedPage) {
+        window.location.href = selectedPage; // Redirect to the selected movie HTML page
+      }
+    });
+  </script><br>
+
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: BUTTERFLY </h1>
+  <video src="{{ url_for('static',filename='videos/national/Butterfly.mp4')}}" controls></video>
+        <p style="text-align:left; color:#fff;">DESCRIPTION: National Geographic's documentary on butterflies explores the incredible transformation of these creatures from caterpillars to winged adults. The film delves into the four stages of a butterfly's life cycle: egg, larva, pupa, and adult.
+        <br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: COBRA vs MEERKAT </h1>
+  <video src="{{ url_for('static',filename='videos/national/Cobra Vs. Meerkat.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: In a gripping "Cobra vs. Meerkat" episode by National Geographic, the natural rivalry between a venomous cobra and a vigilant meerkat clan unfolds in the African savanna. Meerkats, small but highly social and alert creatures, rely on teamwork and keen instincts to defend their territory and young. When a cobra, a lethal predator with deadly venom, threatens their den, the meerkats work together to intimidate and outmane<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: THE LION KING </h1>
+  <video src="{{ url_for('static',filename='videos/national/lion.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: National Geographic’s "The Lion King" explores the real-life behavior of African lions, drawing parallels to the iconic Disney film. The documentary follows a lion pride in the wild, led by a dominant male, and highlights their social structure, hunting techniques, and survival challenges. Viewers witness the lions' fierce battles for territory, their nurturing of cubs, and the constant threats they face from rival lions and hyenas. Through stunning cinematography, the film showcases the majesty of lions while offering insights into their family dynamics and the harsh realities of life in the savanna, providing an authentic look into the animal kingdom.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: THE JUNGLE BOOK </h1>
+  <video src="{{ url_for('static',filename='videos/national/jungle .mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: National Geographic’s "The Jungle Book" documentary delves into the real-world habitats and behaviors of the animals featured in Rudyard Kipling’s classic tale. Set in the jungles of India, the film explores the diverse wildlife, from Bengal tigers to wolves, and examines the intricate relationships between predator and prey. It highlights the life of the Bengal tiger, an apex predator, and the role of the jungle in sustaining these animals. With breathtaking footage, the documentary provides an in-depth look at the ecosystem that inspired the beloved story, revealing the challenges and wonders of jungle life in its natural environment.<br>
+</div>
+<br><div style="text-align:center;">
+  <h1 style="text-align:left; color:#fff;">MOVIE: PEACOCK </h1>
+  <video src="{{ url_for('static',filename='videos/national/peacock.mp4')}}" controls></video>
+    <p style="text-align:left; color:#fff;">DESCRIPTION: National Geographic's "Peacock" documentary showcases the vibrant and majestic peacock, a bird renowned for its striking iridescent feathers and elaborate courtship displays. The film explores the behaviors, habitats, and evolutionary significance of these stunning creatures, focusing on how male peacocks use their colorful tails to attract mates. Through stunning cinematography, the documentary also delves into the peacock’s role in the ecosystem and its cultural symbolism across various societies. It highlights the bird’s unique beauty and survival strategies, offering an in-depth look at one of nature's most remarkable creatures, and provides insight into the evolutionary processes behind its extraordinary appearance.<br>
+</div>
+<br>
+</body>
+</html>
